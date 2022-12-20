@@ -25,7 +25,7 @@ const EmployeePage = () => {
                 method: "DELETE",
                 headers: {
                     "content-type": "application/json",
-                    authorization: token,
+                    authorization: "Bearer " + token,
                 },
             }
         )
@@ -55,7 +55,7 @@ const EmployeePage = () => {
                     method: "GET",
                     headers: {
                         "content-type": "application/json",
-                        authorization: token,
+                        authorization: "Bearer " + token,
                     },
                 }
             )
@@ -72,6 +72,7 @@ const EmployeePage = () => {
                     setErr(err);
                     setLoading(false);
                     setData([]);
+                    console.log(err);
                 });
         };
 
