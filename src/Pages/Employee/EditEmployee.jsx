@@ -108,7 +108,7 @@ const EditEmployee = () => {
                 <label>
                     Date of Birth
                     <DatePicker
-                        // selected={info.DOB}
+                        defaultValue={info.DOB}
                         value={dateFormat(info.DOB)}
                         showMonthDropdown
                         showYearDropdown
