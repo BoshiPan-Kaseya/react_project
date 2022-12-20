@@ -53,7 +53,7 @@ const AddEmployee = () => {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
-                    authorization: token,
+                    authorization: "Bearer " + token,
                 },
                 body: JSON.stringify(data),
             }
@@ -77,7 +77,7 @@ const AddEmployee = () => {
                     method: "GET",
                     headers: {
                         "content-type": "application/json",
-                        authorization: token,
+                        authorization: "Bearer " + token,
                     },
                 }
             )

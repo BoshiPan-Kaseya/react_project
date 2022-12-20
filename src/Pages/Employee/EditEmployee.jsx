@@ -28,7 +28,7 @@ const EditEmployee = () => {
                 method: "PUT",
                 headers: {
                     "content-type": "application/json",
-                    authorization: token,
+                    authorization: "Bearer " + token,
                 },
                 body: JSON.stringify({
                     first_name: info.first_name,
@@ -61,7 +61,7 @@ const EditEmployee = () => {
                     method: "GET",
                     headers: {
                         "content-type": "application/json",
-                        authorization: token,
+                        authorization: "Bearer " + token,
                     },
                 }
             )
