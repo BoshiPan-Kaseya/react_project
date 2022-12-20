@@ -122,29 +122,38 @@ const EditEmployee = () => {
                     Skill Level
                     <select
                         value={
-                            skillList.filter((skill) => {
-                                return skill.skill_name === info.skill_name;
-                            }).skill_level
+                            skillList.filter(
+                                (skill) => skill.skill_name === info.skill_name
+                            ).skill_level
                         }
                         onChange={(e) =>
                             setInfo({ ...info, skill_name: e.target.value })
                         }
                     >
-                        {skillList.map((skill_level) => (
-                            <option
-                                key={skill_level.skill_level}
-                                value={skill_level.skill_level}
-                            >
-                                {skill_level.skill_name}
-                            </option>
-                        ))}
+                        {skillList.map((skill) =>
+                            skill.skill_name === info.skill_name ? (
+                                <option
+                                    key={skill.skill_level}
+                                    value={skill.skill_level}
+                                    selected
+                                >
+                                    {skill.skill_name}
+                                </option>
+                            ) : (
+                                <option
+                                    key={skill.skill_level}
+                                    value={skill.skill_level}
+                                >
+                                    {skill.skill_name}
+                                </option>
+                            )
+                        )}
                     </select>
                 </label>
                 <label>
                     Active Status
                     <select
                         value={info.active}
-                        defaultValue={info.active}
                         onChange={(e) =>
                             setInfo({ ...info, active: e.target.value })
                         }
