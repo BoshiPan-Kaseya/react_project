@@ -43,18 +43,22 @@ const EmployeePage = () => {
     };
 
     const handleEdit = (employee) => {
-        navigate(`edit_employee/${employee.employee_id}`, {state: employee});
+        navigate(`edit_employee/${employee.employee_id}`, { state: employee });
     };
 
     useEffect(() => {
         const fetchData = async () => {
-            await fetch("http://localhost:3000/api/employees", {
-                method: "GET",
-                headers: {
-                    "content-type": "application/json",
-                    authorization: token,
-                },
-            })
+            await fetch(
+                import.meta.env.VITE_TEST_API_ENTRY +
+                    import.meta.env.VITE_EMPOLYEE_ENDPOINT,
+                {
+                    method: "GET",
+                    headers: {
+                        "content-type": "application/json",
+                        authorization: token,
+                    },
+                }
+            )
                 .then((data) => data.json())
                 .then((actualData) => {
                     if (actualData.success === 0) {

@@ -1,13 +1,17 @@
 import { useState } from "react";
 
 const credentials = async (info) => {
-    return fetch("http://localhost:3000/api/login", {
-        method: "POST",
-        headers: {
-            "content-type": "application/json",
-        },
-        body: JSON.stringify(info),
-    })
+    return fetch(
+        import.meta.env.VITE_TEST_API_ENTRY +
+            import.meta.env.VITE_LOGIN_ENDPOINT,
+        {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(info),
+        }
+    )
         .then((data) => data.json())
         .catch((err) => err.json());
 };
@@ -23,7 +27,6 @@ const Login = ({ setToken }) => {
             password: password,
         });
         setToken(data.token);
-        
     };
     return (
         <>
@@ -47,6 +50,5 @@ const Login = ({ setToken }) => {
         </>
     );
 };
-
 
 export default Login;
