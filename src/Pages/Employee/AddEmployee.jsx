@@ -130,6 +130,7 @@ const AddEmployee = () => {
                             placeholder="first name"
                             value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
+                            required
                         />
                     </label>
                     <label>
@@ -198,6 +199,7 @@ const AddEmployee = () => {
                             value={skill}
                             onChange={(e) => setSkill(e.target.value)}
                         >
+                            <option key="null" value="">Select the Skill Level</option>
                             {skillList.map((skill_level) => (
                                 <option
                                     key={skill_level.skill_level}
