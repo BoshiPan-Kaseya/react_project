@@ -4,6 +4,7 @@ import useToken from "../../Authentication/useToken";
 import Login from "../Auth/Login";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./styles.css";
 import dateFormat from "../../Utils/DateFormat";
 
 const EditEmployee = () => {

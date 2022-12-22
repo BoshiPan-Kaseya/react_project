@@ -4,6 +4,7 @@ import Login from "../Auth/Login";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import "./styles.css";
 
 import dateFormat from "../../Utils/DateFormat";
 import { Navigate } from "react-router-dom";
@@ -43,7 +44,6 @@ const AddEmployee = () => {
         addNewEmployee(new_employee);
     };
 
-    //TODO: figure out what does JSON.stringify do, why we need that
     const addNewEmployee = async (data) => {
         await fetch(
             import.meta.env.VITE_TEST_API_ENTRY +
@@ -161,7 +161,6 @@ const AddEmployee = () => {
                             showYearDropdown
                             dropdownMode="select"
                             onChange={(date) => setDOB(date)}
-                            
                         />
                     </label>
                     <label>
