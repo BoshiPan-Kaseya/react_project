@@ -31,6 +31,10 @@ const EmployeePage = () => {
         )
             .then((resposne_data) => resposne_data.json())
             .then((resposne_data) => {
+                if (resposne_data.token) {
+                    setToken(resposne_data.token);
+                    console.log("Refresh token has updated");
+                }
                 if (resposne_data.success === 1) {
                     setData(
                         data.filter((employee) => employee.employee_id !== id)
@@ -210,7 +214,7 @@ const EmployeePage = () => {
                                                 color: "white",
                                                 fontSize: "20px",
                                                 fontWeight: "bolder",
-                                                cursor: "pointer"
+                                                cursor: "pointer",
                                             }}
                                             onClick={() => handleEdit(employee)}
                                         >
