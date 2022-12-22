@@ -35,7 +35,7 @@ const EditEmployee = () => {
                     last_name: info.last_name,
                     DOB: dateFormat(info.DOB),
                     email: info.email,
-                    skill_level: info.skill_name,
+                    skill_level: info.skill_level,
                     active: info.active,
                     age:
                         new Date().getFullYear() -
@@ -170,13 +170,9 @@ const EditEmployee = () => {
                             fontSize: "20px",
                             marginBottom: "20px",
                         }}
-                        value={
-                            skillList.filter(
-                                (skill) => skill.skill_name === info.skill_name
-                            ).skill_level
-                        }
+                        value={info.skill_level}
                         onChange={(e) =>
-                            setInfo({ ...info, skill_name: e.target.value })
+                            setInfo({ ...info, skill_level: e.target.value })
                         }
                     >
                         {skillList.map((skill) =>
