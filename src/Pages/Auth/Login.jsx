@@ -30,21 +30,69 @@ const Login = ({ setToken }) => {
     };
     return (
         <>
-            <div>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    border: "2px solid grey",
+                    borderRadius: "12px",
+                    margin: "15%",
+                    padding: "15%"
+
+                }}
+            >
                 <form onSubmit={handleOnSubmit}>
                     <input
+                        style={{
+                            padding: "10px",
+                            display: "flex",
+                            justifyContent: "center",
+                            textAlign: "center",
+                            alignItems: "center",
+                            borderRadius: "12px",
+                            fontSize: "20px",
+                            marginBottom: "20px"
+                        }}
                         type="text"
                         placeholder="username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                     />
                     <input
+                        style={{
+                            padding: "10px",
+                            display: "flex",
+                            justifyContent: "center",
+                            textAlign: "center",
+                            alignItems: "center",
+                            borderRadius: "12px",
+                            fontSize: "20px",
+                            marginBottom: "20px"
+                        }}
                         type="password"
                         placeholder="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <button type="submit">Login</button>
+                    <button
+                        style={{
+                            backgroundColor: "Cyan",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            padding: "10px",
+                            borderRadius: "12px",
+                            border: "0px",
+                            width: "100%",
+                            height: "40px",
+                            color: "white",
+                            fontSize: "20px",
+                            fontWeight: "bolder",
+                        }}
+                        type="submit"
+                    >
+                        Login
+                    </button>
                 </form>
             </div>
         </>
