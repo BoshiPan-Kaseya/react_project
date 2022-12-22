@@ -41,7 +41,6 @@ const AddEmployee = () => {
             age: new Date().getFullYear() - DOB.getFullYear(),
         };
         addNewEmployee(new_employee);
-
     };
 
     //TODO: figure out what does JSON.stringify do, why we need that
@@ -100,7 +99,16 @@ const AddEmployee = () => {
 
     return (
         <>
-            <div>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    border: "2px solid grey",
+                    borderRadius: "12px",
+                    padding: "10%",
+                }}
+            >
                 {err && <p>Something went wrong</p>}
                 {loading && <p>Loading data</p>}
                 {added && <Navigate to="/" replace={true} />}
@@ -108,6 +116,16 @@ const AddEmployee = () => {
                     <label>
                         First Name
                         <input
+                            style={{
+                                padding: "10px",
+                                display: "flex",
+                                justifyContent: "center",
+                                textAlign: "center",
+                                alignItems: "center",
+                                borderRadius: "12px",
+                                fontSize: "20px",
+                                marginBottom: "20px",
+                            }}
                             type="text"
                             placeholder="first name"
                             value={firstName}
@@ -117,6 +135,16 @@ const AddEmployee = () => {
                     <label>
                         Last Name
                         <input
+                            style={{
+                                padding: "10px",
+                                display: "flex",
+                                justifyContent: "center",
+                                textAlign: "center",
+                                alignItems: "center",
+                                borderRadius: "12px",
+                                fontSize: "20px",
+                                marginBottom: "20px",
+                            }}
                             type="text"
                             placeholder="last name"
                             value={lastName}
@@ -132,11 +160,22 @@ const AddEmployee = () => {
                             showYearDropdown
                             dropdownMode="select"
                             onChange={(date) => setDOB(date)}
+                            
                         />
                     </label>
                     <label>
                         Email
                         <input
+                            style={{
+                                padding: "10px",
+                                display: "flex",
+                                justifyContent: "center",
+                                textAlign: "center",
+                                alignItems: "center",
+                                borderRadius: "12px",
+                                fontSize: "20px",
+                                marginBottom: "20px",
+                            }}
                             type="text"
                             placeholder="email"
                             value={email}
@@ -146,6 +185,16 @@ const AddEmployee = () => {
                     <label>
                         Skill Level
                         <select
+                            style={{
+                                padding: "10px",
+                                display: "flex",
+                                justifyContent: "center",
+                                textAlign: "center",
+                                alignItems: "center",
+                                borderRadius: "12px",
+                                fontSize: "20px",
+                                marginBottom: "20px",
+                            }}
                             value={skill}
                             onChange={(e) => setSkill(e.target.value)}
                         >
@@ -162,6 +211,16 @@ const AddEmployee = () => {
                     <label>
                         Active Status
                         <select
+                            style={{
+                                padding: "10px",
+                                display: "flex",
+                                justifyContent: "center",
+                                textAlign: "center",
+                                alignItems: "center",
+                                borderRadius: "12px",
+                                fontSize: "20px",
+                                marginBottom: "20px",
+                            }}
                             value={active}
                             onChange={(e) => setActive(e.target.value)}
                         >
@@ -169,7 +228,25 @@ const AddEmployee = () => {
                             <option value={0}>inactive</option>
                         </select>
                     </label>
-                    <button type="submit">ADD</button>
+                    <button
+                        style={{
+                            backgroundColor: "Cyan",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            padding: "10px",
+                            borderRadius: "12px",
+                            border: "0px",
+                            width: "100%",
+                            height: "40px",
+                            color: "white",
+                            fontSize: "20px",
+                            fontWeight: "bolder",
+                            cursor: "pointer"
+                        }}
+                        type="submit"
+                    >
+                        ADD
+                    </button>
                 </form>
             </div>
         </>

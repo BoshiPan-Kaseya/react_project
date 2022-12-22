@@ -73,11 +73,30 @@ const EditEmployee = () => {
     }, []);
 
     return (
-        <div>
+        <div
+            style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                border: "2px solid grey",
+                borderRadius: "12px",
+                padding: "10%",
+            }}
+        >
             <form onSubmit={handleUpdateSubmit}>
                 <label>
                     First Name
                     <input
+                        style={{
+                            padding: "10px",
+                            display: "flex",
+                            justifyContent: "center",
+                            textAlign: "center",
+                            alignItems: "center",
+                            borderRadius: "12px",
+                            fontSize: "20px",
+                            marginBottom: "20px",
+                        }}
                         type="text"
                         value={info.first_name}
                         onChange={(e) =>
@@ -88,6 +107,16 @@ const EditEmployee = () => {
                 <label>
                     Last Name
                     <input
+                        style={{
+                            padding: "10px",
+                            display: "flex",
+                            justifyContent: "center",
+                            textAlign: "center",
+                            alignItems: "center",
+                            borderRadius: "12px",
+                            fontSize: "20px",
+                            marginBottom: "20px",
+                        }}
                         type="text"
                         value={info.last_name}
                         onChange={(e) =>
@@ -98,6 +127,16 @@ const EditEmployee = () => {
                 <label>
                     Email
                     <input
+                        style={{
+                            padding: "10px",
+                            display: "flex",
+                            justifyContent: "center",
+                            textAlign: "center",
+                            alignItems: "center",
+                            borderRadius: "12px",
+                            fontSize: "20px",
+                            marginBottom: "20px",
+                        }}
                         type="text"
                         value={info.email}
                         onChange={(e) =>
@@ -121,6 +160,16 @@ const EditEmployee = () => {
                 <label>
                     Skill Level
                     <select
+                        style={{
+                            padding: "10px",
+                            display: "flex",
+                            justifyContent: "center",
+                            textAlign: "center",
+                            alignItems: "center",
+                            borderRadius: "12px",
+                            fontSize: "20px",
+                            marginBottom: "20px",
+                        }}
                         value={
                             skillList.filter(
                                 (skill) => skill.skill_name === info.skill_name
@@ -153,6 +202,16 @@ const EditEmployee = () => {
                 <label>
                     Active Status
                     <select
+                        style={{
+                            padding: "10px",
+                            display: "flex",
+                            justifyContent: "center",
+                            textAlign: "center",
+                            alignItems: "center",
+                            borderRadius: "12px",
+                            fontSize: "20px",
+                            marginBottom: "20px",
+                        }}
                         value={info.active}
                         onChange={(e) =>
                             setInfo({ ...info, active: e.target.value })
@@ -162,7 +221,25 @@ const EditEmployee = () => {
                         <option value={0}>inactive</option>
                     </select>
                 </label>
-                <button type="submit">UPDATE</button>
+                <button
+                    style={{
+                        backgroundColor: "Cyan",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        padding: "10px",
+                        borderRadius: "12px",
+                        border: "0px",
+                        width: "100%",
+                        height: "40px",
+                        color: "white",
+                        fontSize: "20px",
+                        fontWeight: "bolder",
+                        cursor: "pointer"
+                    }}
+                    type="submit"
+                >
+                    UPDATE
+                </button>
             </form>
         </div>
     );
