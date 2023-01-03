@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useToken from "../../Authentication/useToken";
 import dateFormat from "../../Utils/DateFormat";
@@ -124,6 +124,9 @@ const EmployeePage = () => {
                                 <th style={{ borderBottom: "1px solid #ddd" }}>
                                     SKILL
                                 </th>
+                                <th style={{ borderBottom: "1px solid #ddd" }}>
+                                    ACTIVE
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -170,6 +173,13 @@ const EmployeePage = () => {
                                         }}
                                     >
                                         {employee.skill_name}
+                                    </td>
+                                    <td
+                                        style={{
+                                            borderBottom: "1px solid #ddd",
+                                        }}
+                                    >
+                                        {employee.active === 1 ? 'Active' : 'Inactive'}
                                     </td>
                                     <td
                                         style={{
