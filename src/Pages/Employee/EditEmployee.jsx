@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useToken from "../../Authentication/useToken";
 import Login from "../Auth/Login";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./styles.css";
 import dateFormat from "../../Utils/DateFormat";
 
 const EditEmployee = () => {
@@ -35,7 +36,7 @@ const EditEmployee = () => {
                     last_name: info.last_name,
                     DOB: dateFormat(info.DOB),
                     email: info.email,
-                    skill_level: info.skill_name,
+                    skill_level: info.skill_level,
                     active: info.active,
                     age:
                         new Date().getFullYear() -
@@ -73,11 +74,30 @@ const EditEmployee = () => {
     }, []);
 
     return (
-        <div>
+        <div
+            style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                border: "2px solid grey",
+                borderRadius: "12px",
+                padding: "10%",
+            }}
+        >
             <form onSubmit={handleUpdateSubmit}>
                 <label>
                     First Name
                     <input
+                        style={{
+                            padding: "10px",
+                            display: "flex",
+                            justifyContent: "center",
+                            textAlign: "center",
+                            alignItems: "center",
+                            borderRadius: "12px",
+                            fontSize: "20px",
+                            marginBottom: "20px",
+                        }}
                         type="text"
                         value={info.first_name}
                         onChange={(e) =>
@@ -88,6 +108,16 @@ const EditEmployee = () => {
                 <label>
                     Last Name
                     <input
+                        style={{
+                            padding: "10px",
+                            display: "flex",
+                            justifyContent: "center",
+                            textAlign: "center",
+                            alignItems: "center",
+                            borderRadius: "12px",
+                            fontSize: "20px",
+                            marginBottom: "20px",
+                        }}
                         type="text"
                         value={info.last_name}
                         onChange={(e) =>
@@ -98,6 +128,16 @@ const EditEmployee = () => {
                 <label>
                     Email
                     <input
+                        style={{
+                            padding: "10px",
+                            display: "flex",
+                            justifyContent: "center",
+                            textAlign: "center",
+                            alignItems: "center",
+                            borderRadius: "12px",
+                            fontSize: "20px",
+                            marginBottom: "20px",
+                        }}
                         type="text"
                         value={info.email}
                         onChange={(e) =>
@@ -121,30 +161,55 @@ const EditEmployee = () => {
                 <label>
                     Skill Level
                     <select
-                        value={
-                            skillList.filter((skill) => {
-                                return skill.skill_name === info.skill_name;
-                            }).skill_level
-                        }
+                        style={{
+                            padding: "10px",
+                            display: "flex",
+                            justifyContent: "center",
+                            textAlign: "center",
+                            alignItems: "center",
+                            borderRadius: "12px",
+                            fontSize: "20px",
+                            marginBottom: "20px",
+                        }}
+                        value={info.skill_level}
                         onChange={(e) =>
-                            setInfo({ ...info, skill_name: e.target.value })
+                            setInfo({ ...info, skill_level: e.target.value })
                         }
                     >
-                        {skillList.map((skill_level) => (
-                            <option
-                                key={skill_level.skill_level}
-                                value={skill_level.skill_level}
-                            >
-                                {skill_level.skill_name}
-                            </option>
-                        ))}
+                        {skillList.map((skill) =>
+                            skill.skill_name === info.skill_name ? (
+                                <option
+                                    key={skill.skill_level}
+                                    value={skill.skill_level}
+                                    selected
+                                >
+                                    {skill.skill_name}
+                                </option>
+                            ) : (
+                                <option
+                                    key={skill.skill_level}
+                                    value={skill.skill_level}
+                                >
+                                    {skill.skill_name}
+                                </option>
+                            )
+                        )}
                     </select>
                 </label>
                 <label>
                     Active Status
                     <select
+                        style={{
+                            padding: "10px",
+                            display: "flex",
+                            justifyContent: "center",
+                            textAlign: "center",
+                            alignItems: "center",
+                            borderRadius: "12px",
+                            fontSize: "20px",
+                            marginBottom: "20px",
+                        }}
                         value={info.active}
-                        defaultValue={info.active}
                         onChange={(e) =>
                             setInfo({ ...info, active: e.target.value })
                         }
@@ -153,7 +218,25 @@ const EditEmployee = () => {
                         <option value={0}>inactive</option>
                     </select>
                 </label>
-                <button type="submit">UPDATE</button>
+                <button
+                    style={{
+                        backgroundColor: "Cyan",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        padding: "10px",
+                        borderRadius: "12px",
+                        border: "0px",
+                        width: "100%",
+                        height: "40px",
+                        color: "white",
+                        fontSize: "20px",
+                        fontWeight: "bolder",
+                        cursor: "pointer"
+                    }}
+                    type="submit"
+                >
+                    UPDATE
+                </button>
             </form>
         </div>
     );

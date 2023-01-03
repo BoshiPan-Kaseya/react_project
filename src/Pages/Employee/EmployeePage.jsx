@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useToken from "../../Authentication/useToken";
 import dateFormat from "../../Utils/DateFormat";
@@ -31,6 +31,10 @@ const EmployeePage = () => {
         )
             .then((resposne_data) => resposne_data.json())
             .then((resposne_data) => {
+                if (resposne_data.token) {
+                    setToken(resposne_data.token);
+                    console.log("Refresh token has updated");
+                }
                 if (resposne_data.success === 1) {
                     setData(
                         data.filter((employee) => employee.employee_id !== id)
@@ -84,31 +88,117 @@ const EmployeePage = () => {
             {loading && <p>loading the data from server</p>}
             {err && <p>Error Happended</p>}
             {data && (
-                <div>
-                    <table>
+                <div
+                    style={{
+                        fontSize: "25px",
+                        textAlign: "center",
+                        padding: "5px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        width: "100%",
+                    }}
+                >
+                    <table
+                        style={{
+                            width: "100%",
+                        }}
+                    >
                         <thead>
                             <tr>
-                                <th>EMPLOYEE ID</th>
-                                <th>FIRST NAME</th>
-                                <th>LAST NAME</th>
-                                <th>DATE OF BIRTH</th>
-                                <th>AGE</th>
-                                <th>EMAIL</th>
-                                <th>SKILL</th>
+                                <th style={{ borderBottom: "1px solid #ddd" }}>
+                                    FIRST NAME
+                                </th>
+                                <th style={{ borderBottom: "1px solid #ddd" }}>
+                                    LAST NAME
+                                </th>
+                                <th style={{ borderBottom: "1px solid #ddd" }}>
+                                    DATE OF BIRTH
+                                </th>
+                                <th style={{ borderBottom: "1px solid #ddd" }}>
+                                    AGE
+                                </th>
+                                <th style={{ borderBottom: "1px solid #ddd" }}>
+                                    EMAIL
+                                </th>
+                                <th style={{ borderBottom: "1px solid #ddd" }}>
+                                    SKILL
+                                </th>
+                                <th style={{ borderBottom: "1px solid #ddd" }}>
+                                    ACTIVE
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             {data.map((employee) => (
                                 <tr key={employee.employee_id}>
-                                    <td>{employee.employee_id}</td>
-                                    <td>{employee.first_name}</td>
-                                    <td>{employee.last_name}</td>
-                                    <td>{dateFormat(employee.DOB)}</td>
-                                    <td>{employee.age}</td>
-                                    <td>{employee.email}</td>
-                                    <td>{employee.skill_name}</td>
-                                    <td>
+                                    <td
+                                        style={{
+                                            borderBottom: "1px solid #ddd",
+                                        }}
+                                    >
+                                        {employee.first_name}
+                                    </td>
+                                    <td
+                                        style={{
+                                            borderBottom: "1px solid #ddd",
+                                        }}
+                                    >
+                                        {employee.last_name}
+                                    </td>
+                                    <td
+                                        style={{
+                                            borderBottom: "1px solid #ddd",
+                                        }}
+                                    >
+                                        {dateFormat(employee.DOB)}
+                                    </td>
+                                    <td
+                                        style={{
+                                            borderBottom: "1px solid #ddd",
+                                        }}
+                                    >
+                                        {employee.age}
+                                    </td>
+                                    <td
+                                        style={{
+                                            borderBottom: "1px solid #ddd",
+                                        }}
+                                    >
+                                        {employee.email}
+                                    </td>
+                                    <td
+                                        style={{
+                                            borderBottom: "1px solid #ddd",
+                                        }}
+                                    >
+                                        {employee.skill_name}
+                                    </td>
+                                    <td
+                                        style={{
+                                            borderBottom: "1px solid #ddd",
+                                        }}
+                                    >
+                                        {employee.active === 1 ? 'Active' : 'Inactive'}
+                                    </td>
+                                    <td
+                                        style={{
+                                            borderBottom: "1px solid #ddd",
+                                        }}
+                                    >
                                         <button
+                                            style={{
+                                                backgroundColor: "red",
+                                                padding: "10px",
+                                                borderRadius: "12px",
+                                                border: "0px",
+                                                width: "100%",
+                                                height: "40px",
+                                                color: "white",
+                                                fontSize: "20px",
+                                                fontWeight: "bolder",
+                                                cursor: "pointer",
+                                            }}
                                             onClick={() =>
                                                 handleDelete(
                                                     employee.employee_id
@@ -118,8 +208,24 @@ const EmployeePage = () => {
                                             DELETE
                                         </button>
                                     </td>
-                                    <td>
+                                    <td
+                                        style={{
+                                            borderBottom: "1px solid #ddd",
+                                        }}
+                                    >
                                         <button
+                                            style={{
+                                                backgroundColor: "cyan",
+                                                padding: "10px",
+                                                borderRadius: "12px",
+                                                border: "0px",
+                                                width: "100%",
+                                                height: "40px",
+                                                color: "white",
+                                                fontSize: "20px",
+                                                fontWeight: "bolder",
+                                                cursor: "pointer",
+                                            }}
                                             onClick={() => handleEdit(employee)}
                                         >
                                             EDIT
@@ -132,7 +238,21 @@ const EmployeePage = () => {
                 </div>
             )}
             <Link to="/add_new_employee">
-                <button>ADD NEW EMPLOYEE</button>
+                <button
+                    style={{
+                        backgroundColor: "cyan",
+                        padding: "10px",
+                        borderRadius: "12px",
+                        border: "0px",
+                        width: "20%",
+                        height: "40px",
+                        color: "white",
+                        fontSize: "20px",
+                        fontWeight: "bolder",
+                    }}
+                >
+                    ADD NEW EMPLOYEE
+                </button>
             </Link>
         </>
     );
